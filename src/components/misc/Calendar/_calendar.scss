@@ -1,0 +1,16 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background-color: $gray-300;
+  width: max-content;
+  height: calc(100vh - 32px);
+  grid-gap: 1px;
+  border: 1px solid $gray-300;
+  width: auto !important;
+}
+
+.grid-item {
+  background-color: #fff;
+  padding: 16px;
+  height: auto !important;
+}
