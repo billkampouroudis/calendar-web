@@ -1,2 +1,7 @@
+/* autoprefixer: off */
 @import './global';
 @import "~bootstrap/scss/bootstrap";
+@import 'react-toastify/dist/ReactToastify.css';
+
+// Components Styling
+@import '../components//misc/GlobalLoader/globalLoader';

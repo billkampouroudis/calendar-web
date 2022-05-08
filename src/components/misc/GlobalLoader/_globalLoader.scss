@@ -1,0 +1,10 @@
+.global-loader {
+  position: static;
+  left: 0;
+  top: 0;
+  height: 100vh !important;
+  width: 100vw !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
