@@ -1,8 +1,10 @@
 /* autoprefixer: off */
 @import './global';
-@import "~bootstrap/scss/bootstrap";
 @import 'react-toastify/dist/ReactToastify.css';
+@import './_variables.scss';
+
+@import "~bootstrap/scss/bootstrap";
 
 // Components Styling
-@import '../components//misc/GlobalLoader/_globalLoader';
-@import '../components//misc/Calendar/_calendar';
+@import '../components//misc/GlobalLoader/_globalLoader.scss';
+@import '../components//misc/Calendar/_calendar.scss';

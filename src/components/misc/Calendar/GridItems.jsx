@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import qs from 'qs';
 import { toast } from 'react-toastify';
-// import moment from 'moment';
+import moment from 'moment';
 import GridItem from './GridItem';
 import { getUser } from '../../../utils/user';
 import eventApi from '../../../api/eventApi';
@@ -34,14 +34,13 @@ function GridItems(props) {
       pagination: {
         pageSize: 999999
       }
-    }, {
-      encodeValuesOnly: true
     });
 
+    // Fetch all the events of this month
     eventApi.find({ query })
-      .then((res) => setEvents(res.data.data.map((event) => event.attributes)))
+      .then((res) => setEvents(res.data.data))
       .catch(() => toast.error('There was an error while trying to fetch the your events.'));
-  }, []);
+  }, [selectedDate]);
 
   return (
     <div className="grid-container">
@@ -49,9 +48,19 @@ function GridItems(props) {
         <GridItem
           key={day}
           day={day}
-          month={selectedDate.month() + 1}
-          year={selectedDate.year()}
-          events={events}
+          events={(() => {
+            const eventsForThisDay = [];
+            for (const event of events) {
+              const eventDate = moment(event.attributes.dateTime);
+
+              // Kepp only events that match the current grid item's day and month
+              if (eventDate.month() === selectedDate.month() && eventDate.date() === day) {
+                eventsForThisDay.push(event);
+              }
+            }
+
+            return eventsForThisDay;
+          })()}
         />
       ))}
     </div>
