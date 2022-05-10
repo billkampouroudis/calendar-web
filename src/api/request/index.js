@@ -39,7 +39,7 @@ const makeRequest = async ({
   options = {}
 }) => {
   const {
-    cancelToken = undefined, headers = {}
+    cancelToken = undefined, headers = {}, query = ''
   } = options;
 
   if (is.emptyObject(headers)) {
@@ -69,7 +69,7 @@ const makeRequest = async ({
   try {
     const res = await axios({
       method,
-      url,
+      url: query ? `${url}?${query}` : url,
       data,
       ...config
     });

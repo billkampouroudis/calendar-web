@@ -1,3 +1,14 @@
 //
 // Global Application Styling
 //
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.click-effect {
+  :active {
+    transform: scale(.95);
+    transform-origin: center center;
+  }
+}

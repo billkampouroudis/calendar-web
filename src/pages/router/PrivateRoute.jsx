@@ -14,9 +14,9 @@ function PrivateRoute(props) {
 
   useEffect(() => {
     isUserAuthenticated()
-      .then((user) => {
+      .then((res) => {
         // After the confirmation of the jwt, update the user value in case is not correct
-        storeUser(user);
+        storeUser(res.data);
 
         setIsAuthenticated(true);
       })

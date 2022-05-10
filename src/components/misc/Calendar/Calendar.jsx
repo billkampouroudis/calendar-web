@@ -1,14 +1,19 @@
-import moment from 'moment';
-import React from 'react';
+import React, { useState } from 'react';
 import GridItems from './GridItems';
+import DatePicker from './DatePicker';
 
 function Calendar() {
-  const daysInMonth = moment().daysInMonth();
+  const [selectedDate, setSelectedDate] = useState();
 
   return (
-    <div className="grid-container">
-      <GridItems daysInMonth={daysInMonth} />
-    </div>
+    <>
+      <DatePicker onSelectDate={setSelectedDate} />
+      {
+        selectedDate
+          ? <GridItems selectedDate={selectedDate} />
+          : null
+      }
+    </>
   );
 }
 
