@@ -7,6 +7,7 @@ import urls from './router/Urls';
 import HomePage from './HomePage';
 import LoginPage from './LoginPage';
 import LogoutPage from './LogoutPage';
+import DaySchedulePage from './DaySchedulePage';
 
 function Root() {
   return (
@@ -33,6 +34,16 @@ function Root() {
           element={(
             <PrivateRoute>
               <HomePage />
+            </PrivateRoute>
+          )}
+          exact
+        />
+
+        <Route
+          path={`${urls.DAY_SCHEDULE}/:date`}
+          element={(
+            <PrivateRoute>
+              <DaySchedulePage />
             </PrivateRoute>
           )}
           exact

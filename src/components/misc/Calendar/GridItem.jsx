@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { PlusCircleFill } from 'react-bootstrap-icons';
+import { NavLink } from 'react-router-dom';
+import { is } from '@bill.kampouroudis/js-utils';
+import urls from '../../../pages/router/Urls';
 
 function GridItem(props) {
-  const {
-    // eslint-disable-next-line no-unused-vars
-    day, events
-  } = props;
+  const { day, events } = props;
 
   const renderEvents = () => events.map((event) => {
     const date = moment(event.attributes.dateTime);
@@ -31,7 +31,12 @@ function GridItem(props) {
     <div key={day} className="grid-item">
       <div className="d-flex align-items-center justify-content-between mb-2">
         <span>
-          {day}
+          {is.falsy(events) ? day : (
+            <NavLink to={`${urls.DAY_SCHEDULE}/${day}-${moment().format('MM')}-${moment().year()}`}>
+              {day}
+            </NavLink>
+          )}
+
         </span>
 
         <PlusCircleFill className="text-primary cursor-pointer click-effect" style={{ fontSize: '18px' }} />

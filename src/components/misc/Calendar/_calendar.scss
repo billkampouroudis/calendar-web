@@ -52,8 +52,6 @@ $datePickerHeight: 80px;
 }
 
 .event-title-container {
-  @extend .cursor-pointer;
-
   background-color: $secondary;
   padding: 4px;
   margin-bottom: 4px;

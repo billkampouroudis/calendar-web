@@ -6,6 +6,9 @@ const urls = {
   LOGIN: '/login',
   LOGOUT: '/logout',
 
+  // Events
+  DAY_SCHEDULE: '/events/for',
+
   // Errors
   NOT_FOUND: '/404'
 };

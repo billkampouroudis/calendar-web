@@ -17,7 +17,9 @@ function MyNavbar() {
   return (
     <Navbar bg="dark" variant="dark" expand="md">
       <Container>
-        <Navbar.Brand>Welcome Calendar</Navbar.Brand>
+        <LinkContainer to={urls.HOME}>
+          <Navbar.Brand>Welcome Calendar</Navbar.Brand>
+        </LinkContainer>
 
         <Navbar.Toggle />
 
