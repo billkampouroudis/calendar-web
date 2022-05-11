@@ -16,9 +16,7 @@ function LoginPage() {
 
         navigate(urls.HOME);
       })
-      .catch(() => {
-        navigate(urls.LOGOUT);
-      });
+      .catch(() => { });
   }, []);
 
   return (

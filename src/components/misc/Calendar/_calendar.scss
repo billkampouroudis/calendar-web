@@ -32,7 +32,11 @@ $datePickerHeight: 80px;
 .grid-item {
   background-color: #fff;
   padding: 8px;
-  min-height: 150px !important;
+  // min-height: 150px;
+
+  @include media-breakpoint-up(md) {
+    min-height: 150px;
+  }
 }
 
 .date-picker {
