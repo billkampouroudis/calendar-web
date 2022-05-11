@@ -4,10 +4,13 @@ import {
 } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { is } from '@bill.kampouroudis/js-utils';
+import { useLocation } from 'react-router-dom';
 import urls from '../../../pages/router/Urls';
 import { getUser } from '../../../utils/user';
 
 function MyNavbar() {
+  const location = useLocation();
+
   const user = getUser();
 
   if (is.falsy(user)) {
@@ -17,7 +20,7 @@ function MyNavbar() {
   return (
     <Navbar bg="dark" variant="dark" expand="md">
       <Container>
-        <LinkContainer to={urls.HOME}>
+        <LinkContainer to={`${urls.HOME}${location.search}`}>
           <Navbar.Brand>Welcome Calendar</Navbar.Brand>
         </LinkContainer>
 

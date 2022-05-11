@@ -48,6 +48,7 @@ function GridItems(props) {
         <GridItem
           key={day}
           day={day}
+          selectedDate={selectedDate}
           events={(() => {
             const eventsForThisDay = [];
             for (const event of events) {

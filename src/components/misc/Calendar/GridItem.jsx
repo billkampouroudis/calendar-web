@@ -7,7 +7,7 @@ import { is } from '@bill.kampouroudis/js-utils';
 import urls from '../../../pages/router/Urls';
 
 function GridItem(props) {
-  const { day, events } = props;
+  const { day, events, selectedDate } = props;
 
   const renderEvents = () => events.map((event) => {
     const date = moment(event.attributes.dateTime);
@@ -32,11 +32,10 @@ function GridItem(props) {
       <div className="d-flex align-items-center justify-content-between mb-2">
         <span>
           {is.falsy(events) ? day : (
-            <NavLink to={`${urls.DAY_SCHEDULE}/${day}-${moment().format('MM')}-${moment().year()}`}>
+            <NavLink to={`${urls.DAY_SCHEDULE}/${day}-${selectedDate.format('MM')}-${selectedDate.year()}`}>
               {day}
             </NavLink>
           )}
-
         </span>
 
         <PlusCircleFill className="text-primary cursor-pointer click-effect" style={{ fontSize: '18px' }} />
@@ -49,7 +48,8 @@ function GridItem(props) {
 
 GridItem.propTypes = {
   day: PropTypes.number.isRequired,
-  events: PropTypes.array.isRequired
+  events: PropTypes.array.isRequired,
+  selectedDate: PropTypes.object.isRequired
 };
 
 export default GridItem;
