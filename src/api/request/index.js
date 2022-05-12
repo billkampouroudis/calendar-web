@@ -70,6 +70,7 @@ const makeRequest = async ({
     const res = await axios({
       method,
       url: query ? `${url}?${query}` : url,
+      // data: { data },
       data,
       ...config
     });

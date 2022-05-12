@@ -13,6 +13,19 @@ const userApi = {
     } catch (error) {
       return Promise.reject(object.get(() => error.data.error));
     }
+  },
+  create: async (data, options) => {
+    try {
+      const response = await makeRequest({
+        method: requestMethods.POST,
+        url: `${process.env.REACT_APP_API_URL}/events`,
+        data,
+        options
+      });
+      return Promise.resolve(response);
+    } catch (error) {
+      return Promise.reject(object.get(() => error.data.error));
+    }
   }
 };
 

@@ -52,10 +52,13 @@ function EventCards(props) {
 
     const query = qs.stringify({
       filters: {
-        users_permissions_user: {
-          id: {
-            $eq: user.id
-          }
+        // users_permissions_user: {
+        //   id: {
+        //     $eq: user.id
+        //   }
+        // },
+        creatorId: {
+          $eq: user.id
         },
         dateTime: {
           $gte: new Date(`${date.date()} ${date.format('MMMM')} ${date.year()} 00:00`).toISOString(),

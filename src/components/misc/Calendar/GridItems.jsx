@@ -10,7 +10,6 @@ import eventApi from '../../../api/eventApi';
 function GridItems(props) {
   const { selectedDate } = props;
 
-  // eslint-disable-next-line no-unused-vars
   const [events, setEvents] = useState([]);
 
   const user = getUser();
@@ -18,13 +17,16 @@ function GridItems(props) {
   const daysInMonth = selectedDate.daysInMonth();
   const daysOfTheMonth = [...Array(daysInMonth).keys()].map((x) => x + 1); // Creates an array that contains the days of the current month
 
-  useEffect(() => {
+  const findEvents = () => {
     const query = qs.stringify({
       filters: {
-        users_permissions_user: {
-          id: {
-            $eq: user.id
-          }
+        // users_permissions_user: {
+        //   id: {
+        //     $eq: user.id
+        //   }
+        // },
+        creatorId: {
+          $eq: user.id
         },
         dateTime: {
           $gte: new Date(`01 ${selectedDate.format('MMMM')} ${selectedDate.year()} 00:00 UTC`).toISOString(),
@@ -40,6 +42,10 @@ function GridItems(props) {
     eventApi.find({ query })
       .then((res) => setEvents(res.data.data))
       .catch(() => toast.error('There was an error while trying to fetch the your events.'));
+  };
+
+  useEffect(() => {
+    findEvents();
   }, [selectedDate]);
 
   return (
@@ -49,6 +55,7 @@ function GridItems(props) {
           key={day}
           day={day}
           selectedDate={selectedDate}
+          onRefreshEvents={findEvents}
           events={(() => {
             const eventsForThisDay = [];
             for (const event of events) {
@@ -65,6 +72,7 @@ function GridItems(props) {
         />
       ))}
     </div>
+
   );
 }
 
