@@ -4,6 +4,7 @@ import qs from 'qs';
 import { toast } from 'react-toastify';
 import { Pagination } from 'react-bootstrap';
 import { useSearchParams, useLocation, useNavigate } from 'react-router-dom';
+import { is } from '@bill.kampouroudis/js-utils';
 import EventCard from './EventCard';
 import { getUser } from '../../../utils/user';
 import eventApi from '../../../api/eventApi';
@@ -47,16 +48,11 @@ function EventCards(props) {
     );
   };
 
-  useEffect(() => {
+  const findEvents = () => {
     const page = searchParams.get('page');
 
     const query = qs.stringify({
       filters: {
-        // users_permissions_user: {
-        //   id: {
-        //     $eq: user.id
-        //   }
-        // },
         creatorId: {
           $eq: user.id
         },
@@ -78,14 +74,22 @@ function EventCards(props) {
         setPagination(res.data.meta.pagination);
       })
       .catch(() => toast.error('There was an error while trying to fetch the your events.'));
+  };
+
+  useEffect(() => {
+    findEvents();
   }, [searchParams.get('page')]);
 
   return (
     <>
       {
-        events.map((event) => (
-          <EventCard event={event} key={event.id} />
-        ))
+        is.emptyArray(events) ? (
+          <div>No events for this day</div>
+        ) : (
+          events.map((event) => (
+            <EventCard event={event} key={event.id} onRefreshEvents={findEvents} />
+          ))
+        )
       }
       {renderPagination()}
 

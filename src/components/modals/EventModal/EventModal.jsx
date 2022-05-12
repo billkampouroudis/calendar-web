@@ -17,7 +17,7 @@ function EventModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <EventForm selectedDate={selectedDate} day={day} onSuccess={onRefreshEvents} />
+        <EventForm selectedDate={selectedDate} day={day} event={event} onSuccess={onRefreshEvents} />
       </Modal.Body>
     </Modal>
   );

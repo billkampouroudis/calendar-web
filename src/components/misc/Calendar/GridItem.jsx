@@ -68,9 +68,7 @@ function GridItem(props) {
           />
         ) : null
       }
-
     </>
-
   );
 }
 

@@ -10,7 +10,7 @@ root.render(
   // <React.StrictMode>
   <>
     <App />
-    <ToastContainer position="top-center" />
+    <ToastContainer position="top-center" autoClose={1000} />
   </>
   // </React.StrictMode>
 );
