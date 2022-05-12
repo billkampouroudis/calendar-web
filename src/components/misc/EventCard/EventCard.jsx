@@ -24,16 +24,24 @@ function EventCard(props) {
             </div>
 
             {/* Event Location */}
-            <div className="mb-2 d-flex align-items-center">
-              <GeoAltFill className="me-1 text-primary" style={{ fontSize: '1.1rem', flexShrink: 0 }} />
-              {event.attributes.place}
-            </div>
+            {
+              event.attributes.place ? (
+                <div className="m-0 mt-2 d-flex align-items-center">
+                  <GeoAltFill className="me-1 text-primary" style={{ fontSize: '1.1rem', flexShrink: 0 }} />
+                  {event.attributes.place}
+                </div>
+              ) : null
+            }
 
             {/* Event Attendees */}
-            <div className="d-flex align-items-center">
-              <PersonFill className="me-1 text-primary" style={{ fontSize: '1.1rem', flexShrink: 0 }} />
-              {event.attributes.attendees}
-            </div>
+            {
+              event.attributes.attendees ? (
+                <div className="m-0 mt-2 d-flex align-items-center">
+                  <PersonFill className="me-1 text-primary" style={{ fontSize: '1.1rem', flexShrink: 0 }} />
+                  {event.attributes.attendees}
+                </div>
+              ) : null
+            }
 
             {/* Event description */}
             {
