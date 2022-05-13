@@ -47,7 +47,7 @@ function EventForm(props) {
           toast.success('The event was created!');
           onSuccess();
         })
-        .catch(() => toast.success('There was an error while saving the event'));
+        .catch(() => toast.error('There was an error while saving the event'));
     } else {
       eventApi.update(event.id, { ...values })
         .then(() => {
