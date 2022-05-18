@@ -66,8 +66,8 @@ function EventCard(props) {
               setShowEventModal(false);
               onRefreshEvents();
             }}
-            day={moment(event.dateTime).date()}
-            selectedDate={moment(event.dateTime)}
+            day={moment(event.attributes.dateTime).date()}
+            selectedDate={moment(event.attributes.dateTime)}
             event={event}
           />
         ) : null
